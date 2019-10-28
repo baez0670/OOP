@@ -25,11 +25,20 @@ public:
     unique_immut operator*(unique_immut &unique);
     unique_immut operator/(unique_immut &unique);
 	Object* operator->() {
+		if (_mgr == nullptr) {
+			return nullptr;
+		}
 		return _mgr->ptr;
 	};
 
 	unique_immut&operator=(unique_immut& r) {
-		r._mgr->count++;
+		if (_mgr == r._mgr) {
+			return *this;
+		}
+		release();
+		_mgr = r._mgr;
+		r._mgr = nullptr;
+		return *this;
 	};
 }; // end of class unique_immut
 } // end of namespace ptr

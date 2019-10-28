@@ -16,6 +16,7 @@ private:
 public:
     shared_mut();
 	shared_mut(const shared_mut&shared) {
+		release();
 		_mgr=shared._mgr;
 		increase();
 	};
@@ -31,6 +32,9 @@ public:
     shared_mut operator*(const shared_mut &shared);
     shared_mut operator/(const shared_mut &shared);
 	Object* operator->() {
+		if (_mgr == nullptr) {
+			return nullptr;
+		}
 		return _mgr->ptr;
 	};
 
@@ -40,7 +44,10 @@ public:
 //    shared_mut operator/(unique_immut &unique);
 //    shared_mut&operator=(unique_immut &r);
 	shared_mut&operator=(const shared_mut &r) {
-		 _mgr->count++;
+		release();
+		_mgr = r._mgr;
+		increase();
+		return *this;
 	};
 }; // end of class shared_mut
 } // end of namespace ptr
