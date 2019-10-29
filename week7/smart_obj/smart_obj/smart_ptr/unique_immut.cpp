@@ -27,7 +27,6 @@ void unique_immut::release() {
 	if (_mgr == nullptr) {
 		return;
 	}
-	_mgr->count--;
 	if (_mgr->ptr != nullptr) {
 		delete _mgr;
 	}
