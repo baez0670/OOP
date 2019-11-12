@@ -1,7 +1,6 @@
 #include "car.h"
 
 car::car(){
-	char* car_name;
 }
 car::car(int wheel_number, int max_speed) :vehicle(wheel_number, max_speed) {
 	this->wheel_number = wheel_number;

@@ -15,7 +15,7 @@ int main() {
     std::cout << b1->get_bike_name() << std::endl;
     std::cout << b1->get_wheel_number() << std::endl;
     std::cout << b1->get_max_speed() << std::endl;
-    c1->set_max_speed(90);
+    b1->set_max_speed(90);
     std::cout << b1->get_max_speed() << std::endl;
     std::cout << b1->get_bike_number() << std::endl;
     std::cout << b1->get_has_name() << std::endl;
